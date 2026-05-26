@@ -1,0 +1,20 @@
+name: mumu-mini-bot
+services:
+  - name: bot
+    git:
+      branch: main
+    ports:
+      - port: 25680
+        protocol: http
+    routes:
+      - port: 25680
+        path: /
+    build:
+      type: buildpack
+    run:
+      command: node silva.js
+    env:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "25680"
